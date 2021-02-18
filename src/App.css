@@ -36,3 +36,56 @@
     transform: rotate(360deg);
   }
 }
+
+.hover_effect:hover {
+  color: red;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.radio{
+  border: solid;
+}
+
+.random:nth-child(even) {
+  background-color: grey;
+}
+
+.div2:hover{
+  border-bottom: 10px solid yellow;
+
+}
+
+.div1{
+  color: white;
+}
+
+img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  opacity: 20%;
+}
