@@ -1,0 +1,40 @@
+
+
+$small: 4px;
+$medium: 8px;
+$large: 12px;
+$xl: 16px;
+
+.ms{
+    margin: $small;
+}
+.mm{
+    margin: $medium;
+}
+.ml{
+    margin: $large;
+}
+.mxl{
+    margin: $xl;
+}
+
+.ps{
+    padding:$small;
+}
+.pm{
+    padding:$medium;
+}
+.ps{
+    padding:$large;
+}
+.ps{
+    padding:$xl;
+}
+
+.myborder{
+    border: 1px solid;
+}
+
+.div1{
+    margin: 20px;
+}
