@@ -1,0 +1,63 @@
+.header{
+    background-color:purple;
+    color: white;
+    margin: 5px;
+    border: 10px hidden;
+}
+.Hero{
+    background-color: red;
+    color: white;
+    margin: 0.5vw;
+    border: 20vw hidden;
+    height: 5em;
+}
+
+.Content{
+    background-color: green;
+    color: white;
+    margin: 0.5rem;
+    border: 2.5rem hidden;
+    height: 20rem;
+    /* display: inline-block; */
+}
+
+.sidebar{
+
+    background-color: blue;
+    color: white;
+    margin: 0.5rem;
+    border: 2.5rem hidden;
+    height: 5em;
+    /* display: inline-block; */
+}
+
+.footer{
+    background-color: grey;
+    color: white;
+    margin: 1%;
+    border: 100% hidden;
+    height: 150%;
+}
+
+@media (max-width: 640px) {
+
+    .Content{
+        background-color: green;
+        color: white;
+        margin: 0.5rem;
+        border: 2.5rem hidden;
+        height: 20rem;
+        display: inline-block;
+    }
+
+    .sidebar{
+
+        background-color: blue;
+        color: white;
+        margin: 0.5rem;
+        border: 2.5rem hidden;
+        height: 5em;
+        display: inline-block;
+    }
+    
+  }
