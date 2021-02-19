@@ -1,65 +1,91 @@
 .header{
-    background-color:purple;
+    background-color:cornflowerblue;
     color: white;
-    margin: 5px;
+    margin: 6px;
+    text-decoration: none;
     border: 10px hidden;
+    padding: 5px;
+    font-size: 30px;
 }
 .Hero{
     background-color: red;
     color: white;
-    margin: 0.5vw;
-    border: 20vw hidden;
-    height: 5em;
+    margin: 6px;
+    border: 10px hidden;
+    height: 150px;
+    padding: 5px;
+    font-size: 30px;
 }
 
 .Content{
     background-color: green;
     color: white;
-    margin: 0.5rem;
-    border: 2.5rem hidden;
-    height: 20rem;
+    margin: 6px;
+    border: 10px hidden;
+    height: 250px;
+    padding: 5px;
+    font-size: 30px;
     /* display: inline-block; */
 }
 
 .sidebar{
 
-    background-color: blue;
+    background-color: rebeccapurple;
     color: white;
-    margin: 0.5rem;
-    border: 2.5rem hidden;
-    height: 5em;
+    margin: 6px;
+    margin-top: -0.5px;
+    border: 10px hidden;
+    height: 150px;
+    padding: 5px;
+    font-size: 30px;
+
+
     /* display: inline-block; */
 }
 
 .footer{
     background-color: grey;
     color: white;
-    margin: 1%;
-    border: 100% hidden;
-    height: 150%;
+    margin: 6px;
+    border: 10px hidden;
+    height: 50px;
+    padding: 5px;
+    font-size: 30px;
+
 }
 
-@media (max-width: 640px) {
+.box{
+    border: 2px solid;
+    width: 350px;
+    margin:auto
+}
 
-    .Content{
-        background-color: green;
-        color: white;
-        margin: 0.5rem;
-        border: 2.5rem hidden;
-        height: 20rem;
-        width: 17rem;
-        display: inline-block;
+/* .whatever {
+    margin-top: -px;
+    margin-bottom: -5px;
+} */
+
+
+
+@media screen and (min-width: 640px) {
+   
+    .whatever {
+        display: flex;
     }
 
     .sidebar{
-
-        background-color: blue;
-        color: white;
-        margin: 0.5rem;
-        border: 2.5rem hidden;
-        height: 8em;
-        width: 17rem;
-        display: inline-block;
+        flex-grow: 1;
+        margin-left: -1px;
+        height: 350px;
     }
-    
+
+    .Content{
+        flex-grow: 2;
+        margin-top: -1px;
+        height: 350px;
+    }
+
+    .footer{
+        margin-top: 0px;
+    }
   }
