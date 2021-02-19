@@ -12,7 +12,7 @@ class App extends Component {
     <Router>
         <div>
           <h2>Welcome to React Router Tutorial</h2>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light try">
           <ul className="navbar-nav mr-auto">
             <li><Link to={'/exercise_1'} className="nav-link">Exercise 1</Link></li>
             <li><Link to={'/exercise_2'} className="nav-link">Exercise 2</Link></li>

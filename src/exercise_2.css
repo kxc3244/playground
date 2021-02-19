@@ -1,3 +1,4 @@
+
 .header{
     background-color:purple;
     color: white;
@@ -57,7 +58,7 @@
         color: white;
         margin: 0.5rem;
         border: 2.5rem hidden;
-        height: 5em;
+        height: 8em;
         width: 17rem;
         display: inline-block;
     }
