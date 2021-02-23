@@ -47,7 +47,30 @@ function Javascript_play() {
      console.log(capitalizeLetter('this is a test scentence for task 4'));
 
      console.log(calculateLetters('Please'));
-     
+
+      
+     const regex = /a{2,}|e{2,}/gm;
+      const str = `Three girls went to forest .Monkey said yee yaaaaaw `;
+      let m;
+      let k=[];
+
+      while ((m = regex.exec(str)) !== null) {
+         // This is necessary to avoid infinite loops with zero-width matches
+         if (m.index === regex.lastIndex) {
+            regex.lastIndex++;
+         }
+         
+         // The result can be accessed through the `m`-variable.
+         m.forEach((match, groupIndex) => {
+            // console.log(`${match}`);
+            k.push(match);
+         });
+      }
+
+      console.log(k.join(''));
+
+
+
        return (
           <div>
              <h1>Hello</h1>
