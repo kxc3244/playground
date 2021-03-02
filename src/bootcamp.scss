@@ -7,7 +7,7 @@ $xl: 16px;
 
 $darktheme-bgcolor: black;
 $darktheme-color: white;
-$lighttheme-bgcolor: LemonChiffon;
+$lighttheme-bgcolor: lightblue;
 $lighttheme-color: black;
 
 
@@ -38,7 +38,7 @@ $lighttheme-color: black;
 
 @mixin darktheme {
 background-color: $darktheme-bgcolor;
-color: $darktheme-color;    
+color: $darktheme-color;   
 }
 
 @mixin lighttheme {
@@ -49,13 +49,14 @@ color: $darktheme-color;
 
 .darktheme{
     @include darktheme;
-    height: 300px;
-    width: 300px;
+    margin: 10px
+    
+
 }
 
 .lighttheme{
     @include lighttheme;
-    height: 300px;
-    width: 300px;
+    margin: 10px
+
 }
 

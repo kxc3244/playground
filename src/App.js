@@ -8,6 +8,8 @@ import Home from './Home.js';
 import Exercise_4 from './Exercise_4';
 import './bootcamp.scss';
 import './App.css';
+import Lottery from './components/Lottery/Lottery';
+import Form from './components/Form/Form'
 
 class App extends Component {
   render() {
@@ -22,6 +24,8 @@ class App extends Component {
             <li><Link to={'/replicate_code'} className="nav-link">Exercise 3</Link></li>
             <li><Link to={'/jsplayground'} className="nav-link">jsplayground</Link></li>
             <li><Link to={'/exercise_4'} className="nav-link">Exercise 4(Stock Layout)</Link></li> 
+            <li><Link to={'/lottery'} className="nav-link">Lottery</Link></li> 
+            
             <li>
             <a href="https://www.github.com/kxc3244/playground" target="_blank" className="nav-link">
               Github Repository</a></li>
@@ -35,6 +39,9 @@ class App extends Component {
               <Route path='/replicate_code' component={Replicate_Code} />
               <Route path='/jsplayground' component={Javascript_play} />
               <Route path='/exercise_4' component={Exercise_4} />
+              <Route path='/lottery' component={Lottery} />
+              <Route path='/form' component={Form} />              
+
           </Switch>
         </div>
       </BrowserRouter>
