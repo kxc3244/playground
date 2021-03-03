@@ -1,25 +1,26 @@
 import ReactDOM from 'react-dom';
 import React, { useState, Component, useEffect } from 'react';
+import {Button} from 'reactstrap'
 
 
 
 
-function Form() {
-    // {careerUrl,
-    //     setCareerUrl,
-    //     employer,
-    //     setEmployer,
-    //     graduationYear,
-    //     setGraduationYear,
-    //     jobStartDate,
-    //     setJobStartDate,
-    //     jobTitle,
-    //     setJobTitle,
-    //     specialization,
-    //     setSpecialization,
-    //     universityName,
-    //     setUniversityName,
-    //     handleSubmit}
+function Form({careerUrl,
+    setCareerUrl,
+    employer,
+    setEmployer,
+    graduationYear,
+    setGraduationYear,
+    jobStartDate,
+    setJobStartDate,
+    jobTitle,
+    setJobTitle,
+    specialization,
+    setSpecialization,
+    universityName,
+    setUniversityName,
+    handleSubmit}) {
+    
     // const [careerUrl,setCareerUrl] =useState("");
     // const [employer,setEmployer] =useState("");
     // const [graduationYear,setGraduationYear] =useState("");
@@ -33,21 +34,21 @@ function Form() {
 
     // useEffect(()=>{
         
-        const {careerUrl,
-                setCareerUrl,
-                employer,
-                setEmployer,
-                graduationYear,
-                setGraduationYear,
-                jobStartDate,
-                setJobStartDate,
-                jobTitle,
-                setJobTitle,
-                specialization,
-                setSpecialization,
-                universityName,
-                setUniversityName,
-                handleSubmit} = this.props.location.state;
+        // const {careerUrl,
+        //         setCareerUrl,
+        //         employer,
+        //         setEmployer,
+        //         graduationYear,
+        //         setGraduationYear,
+        //         jobStartDate,
+        //         setJobStartDate,
+        //         jobTitle,
+        //         setJobTitle,
+        //         specialization,
+        //         setSpecialization,
+        //         universityName,
+        //         setUniversityName,
+        //         handleSubmit} = this.props.location.state;
     // })
     // }
 
@@ -91,7 +92,7 @@ function Form() {
                 <label for="uName">University Name:</label><br></br>
                 <input type="text" id="uName" name="uName" onChange={(e)=>setUniversityName(e.target.value)} value={universityName} placeholder='University of Blah and Blah'></input><br></br><br></br>
 
-                <button disabled={handleDisable()} id="SubmitButton" type="submit" onClick={()=>handleSubmit()}>Submit</button>                
+                {/* <Button disabled={handleDisable()} id="SubmitButton" type="submit" onClick={()=>handleSubmit()} color="primary">Submit</Button>                 */}
             </div>
           </div>
        )

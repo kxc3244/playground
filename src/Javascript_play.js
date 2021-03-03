@@ -5,6 +5,13 @@ import {v4 as uuidv4} from 'uuid';
 import { BrowserRouter as Router, Switch, Route, Link, BrowserRouter, NavLink } from 'react-router-dom';
 import Form from './components/Form/Form'
 import Home from './Home.js';
+import Modal from './Modal';
+import './bootcamp.scss'
+import CardDetails from './components/CardDetails/CardDetails'
+import {Button} from 'reactstrap'
+import Checkbox from '@material-ui/core/Checkbox';
+
+
 
 
 
@@ -366,6 +373,12 @@ function Javascript_play() {
       const [jobTitle,setJobTitle] =useState("");
       const [specialization,setSpecialization] =useState("");
       const [universityName,setUniversityName] =useState("");
+      const [isModelOpen,setIsModalOpen]=useState(false)
+      const [viewCurrentRecord,setViewCurrentRecord]=useState({})
+      const [searchText,setSearchText]=useState("")
+      const [searchInvoked,setSearchInvoked]=useState(false)
+      const [filteredData,setFilteredData]=useState([])
+      const [graduationYearFilter,setGraduationYearFilter]=useState({})
 
 
 
@@ -445,19 +458,100 @@ function Javascript_play() {
          setData(uuidData);            
 
       },[])
+
+
+      function handleOnClickCard(id){
+         console.log("ONCLICK WAS CLICKED")
+         let entry =data.filter(i=>i.id === id)
+         console.log(entry,'filteredEntry');
+         setViewCurrentRecord(entry[0])
+         setIsModalOpen(true)
+      }
                 
 
 
-            const givenData = data.map((item)=>{
-               const {Employer,Career_Url,Job_Title,id} =item;
+            // const givenData = data.map((item)=>{
+            //    const {Employer,Career_Url,Job_Title,id} =item;
+            //    EmployerMap.set(id,Employer)
+
+               
+               
+            //    return(
+
+            //    <div className="clickCard" onClick={()=>handleOnClickCard(id)}>
+            //       <Card EmployerMap={EmployerMap} Career_Url={Career_Url} 
+            //       Job_Title={Job_Title} id={id} key ={id} fav={fav} setFav={setFav} deleteCard={deleteCard}/>
+
+            //    </div>
+            //    )
+
+
+            // })
+
+            const univName =filterLogic().map((i,idx,arr)=>{
+               const {Employer,Career_Url,Job_Title,id,Graduation_Year} =i;
                EmployerMap.set(id,Employer)
                
-               return(
-               <Card EmployerMap={EmployerMap} Career_Url={Career_Url} Job_Title={Job_Title} id={id} key ={id} fav={fav} setFav={setFav} deleteCard={deleteCard}/>
-               )
+               
+               return (
+                   <div className='clickCard' onClick={()=>handleOnClickCard(id)}>
+                   <Card 
+                  EmployerMap={EmployerMap} Career_Url={Career_Url} 
+                        Job_Title={Job_Title} id={id} key ={id} fav={fav} setFav={setFav} deleteCard={deleteCard} 
+                        Graduation_Year= {Graduation_Year}
+                   />
+                   </div>
+                   )
+                   
+               }) 
 
+            function handleClear(){
+               setSearchText("")
+               setSearchInvoked(false)
+               }
 
-            })
+               function handleSearch () {
+                   if(searchText.length ===0){
+                       setSearchInvoked(false)
+                   }
+                   else {
+                       setSearchInvoked(true)
+                   }
+               
+                   let copyData =[...data]
+                       copyData = copyData.filter(i=>{
+                       return i.Employer.toLowerCase().includes(searchText.toLowerCase())
+                      }) 
+                      console.log(copyData,'copyData');
+                   if(setSearchInvoked){
+                      setFilteredData(copyData)
+                   }
+                   
+               }
+
+               function getGraduationYear(){
+
+                  return  Object.entries(graduationYearFilter).map(j=>{
+                      return  <span style={{display:'inlineFlex'}}>
+                     <label>{j[0]}</label>
+                     <Checkbox
+                        checked={j[1]}
+                        onChange={()=>handleGraduationDateOnChange(j[0])}
+                        inputProps={{ 'aria-label': 'primary checkbox' }}
+                      />
+                      </span>
+                   })
+                    
+                }
+
+                function handleGraduationDateOnChange(year){
+
+                  let copyObj= {...graduationYearFilter}
+                  copyObj[year]=!copyObj[year]
+               console.log(copyObj,'copyObj');
+               setGraduationYearFilter(copyObj)
+              
+              }
 
             
 
@@ -480,13 +574,92 @@ function Javascript_play() {
 
             // console.log(getNthFib(6))
 
+            function filterLogic () {
+               if(searchInvoked){
+                   // return filteredData
+                  const filterByYear= filteredData.filter((i)=>{
+                const gradYear = i.Graduation_Year 
+               return graduationYearFilter[gradYear]
+                  })
+                  return filterByYear
+               }
+                   return data
+               }
+
+            useEffect(()=>{
+               let getyears=filteredData.map(i=>i.Graduation_Year)
+               let unique = [...new Set(getyears)];
+            
+               let obj={}
+           unique.forEach(l=>{
+                 obj[l]=true
+            })
+             setGraduationYearFilter(obj)
+               
+           },[searchInvoked])
+
+
+
 
 
           
 
        return (
           <div>
+
+             {/* <Modal startButtonLabel ="Open" title="My Modal Title" body="I am having fun" startButtonColor="danger" 
+             actionButtonlabel="Submit" actionButtonColor="danger" handleSubmit={handleSubmit}>
+
+             <Form 
+                   careerUrl = {careerUrl}
+                   setCareerUrl={ setCareerUrl}
+                   employer = {employer}
+                   setEmployer ={setEmployer}
+                   graduationYear = {graduationYear}
+                   setGraduationYear = {setGraduationYear}
+                   jobStartDate = {jobStartDate}
+                   setJobStartDate = {setJobStartDate}
+                   jobTitle = {jobTitle}
+                   setJobTitle = {setJobTitle}
+                   specialization ={ specialization}
+                   setSpecialization = {setSpecialization}
+                   universityName ={ universityName}
+                   setUniversityName = {setUniversityName}
+                   handleSubmit={handleSubmit}/>
+             </Modal> */}
+
+
+               <Modal
+               buttonLabel="Open"
+               title="Please enter the form "
+               handleSubmit={handleSubmit}
+               isModalOpen={isModelOpen}
+               setIsModalOpen={setIsModalOpen}
+               cta_primary = "Enter"
+               cta_secondary ="Okay"
+               >
+               <CardDetails
+               Employer={viewCurrentRecord.Employer}
+               careerUrl={viewCurrentRecord.Career_Url}
+               Job_Title={viewCurrentRecord.Job_Title}
+               Job_Start_Date={viewCurrentRecord.Job_Start_Date}
+               Specialization={viewCurrentRecord.Specialization}
+               University_Name={viewCurrentRecord.University_Name}
+
+               />
+               </Modal>
              Here is a list of your Current Favorites
+             <div>
+            <input placeholder='Search with Company name'  value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+            <span style={{marginLeft:'20px'}}><Button disabled={searchInvoked} onClick={()=>handleSearch()} color="primary">Search</Button></span>
+            {searchInvoked && <span style={{marginLeft:'20px'}}>
+               <Button onClick={()=>handleClear()} color="primary">Clear</Button>
+               {getGraduationYear()}
+
+            </span>
+
+            }
+            </div>
              <div>
                 <ul>
                 {fav.map((i)=>{
@@ -506,7 +679,7 @@ function Javascript_play() {
                 </div>
                 <div>
                    {/* <button onClick={()=>createEntry()}>Create Entry</button> */}
-                   <Link to={{
+                   {/* <Link to={{
                       pathname: "/form",
                       state: {
                         careerUrl : {careerUrl},
@@ -525,7 +698,9 @@ function Javascript_play() {
                         setUniversityName: {setUniversityName},
                         handleSubmit :{handleSubmit}
                       }
-                   }} className="btn btn-primary">Create Entry</Link>
+                   }} className="btn btn-primary">Create Entry</Link> */}
+
+                   
 
                    {/* <Form 
                    careerUrl = {careerUrl}
@@ -546,7 +721,7 @@ function Javascript_play() {
                 </div>
             Here Is a List of Companies
             <div>
-               {givenData}                
+               {univName}                
             </div>
           </div>
        )

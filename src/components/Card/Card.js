@@ -5,7 +5,7 @@ import Url from '../Url/index'
 import PropTypes from 'prop-types'
 import '../../bootcamp.scss'
 
-function Card({EmployerMap,Career_Url,Job_Title,id,fav,setFav,deleteCard}){
+function Card({EmployerMap,Career_Url,Job_Title,id,fav,setFav,deleteCard,Graduation_Year}){
 
     
     // console.log(id);
@@ -51,6 +51,7 @@ function Card({EmployerMap,Career_Url,Job_Title,id,fav,setFav,deleteCard}){
                             <div><Url url={Career_Url} text={'Career Site'} styleClass={'link'}/></div>
                             <div>{EmployerMap.get(id)}</div>
                             <div>{Job_Title}</div>     
+                            <div>{Graduation_Year}</div>
                             <button onClick={(e)=>handleFavClick({EmployerMap,id,e,setTheme})}>Favorite</button> 
                             <button onClick={(e)=>handleDeleteFav({EmployerMap,id,e,setTheme})}>Delete Favorite</button>
                             <button onClick={()=>deleteCard(id)}>Delete Record</button>
