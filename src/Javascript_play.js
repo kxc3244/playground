@@ -395,9 +395,10 @@ function Javascript_play() {
       // var deletedRecordCurrent;
       
       
-         function deleteCard(id) {
+         function deleteCard(e,id) {
             // function deleteCard(id){
                // EmployerMap.delete(id);
+               e.stopPropagation();
                 let deletedRecordCurrent  = data.filter((i)=>{
                   return i.id === id;
                })
@@ -488,6 +489,10 @@ function Javascript_play() {
 
             // })
 
+            const [isSearching, setIsSearching] = useState(false);
+
+   
+
             const univName =filterLogic().map((i,idx,arr)=>{
                const {Employer,Career_Url,Job_Title,id,Graduation_Year} =i;
                EmployerMap.set(id,Employer)
@@ -503,7 +508,56 @@ function Javascript_play() {
                    </div>
                    )
                    
-               }) 
+               })  
+               // let n = data.length/25;
+               // for(let i=0;i<n;i++){
+               //    return (<button style={{margin: "2px" ,display:"inline"}}>{i+1}</button>)
+               // }
+
+               function generateButtonsArray(){
+                  let a=[]
+                  // let copy = data
+                  const n = Math.ceil(data.length/25);
+                  for(let i=0;i<n;i++){
+                     a.push(i)
+                     }
+                     return a;
+               }
+            
+               const[currentPage,setCurrentPage] = useState(1);
+               
+
+               const buttonStuff = generateButtonsArray().map((i)=>{
+                  return (<button onClick={()=>{handlePageClick(i)}}style={{margin: "2px" ,display:"inline"}}>{i+1}</button>)
+               })
+
+
+               function handlePageClick(i){
+                  setCurrentPage(i);
+                  handleNextClick();
+               }
+               
+
+               function handleNextClick(){
+
+                  if(currentPage===1){
+                     // console.log(data.slice(1,25),'SLICED ARRAY')
+                     const copy = data.slice(1,26)
+                     setData(copy)
+                  } else {
+                     let startIndex = (currentPage-1)*25 + 1;
+                     const copy1 = data.slice(1,26)
+                     setData(copy1);
+
+                  }
+
+               }
+                  
+                    
+               
+
+
+
 
             function handleClear(){
                setSearchText("")
@@ -600,6 +654,13 @@ function Javascript_play() {
 
 
 
+           function handleEnter(event){
+              if(event.which === 13) {
+               handleSearch();
+               // console.log('ENTER WORKS')
+               // alert('Kevin')
+            }
+           }
 
 
           
@@ -650,7 +711,7 @@ function Javascript_play() {
                </Modal>
              Here is a list of your Current Favorites
              <div>
-            <input placeholder='Search with Company name'  value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+            <input autoFocus placeholder='Company Name' onKeyPress={(e)=>handleEnter(e)}  value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
             <span style={{marginLeft:'20px'}}><Button disabled={searchInvoked} onClick={()=>handleSearch()} color="primary">Search</Button></span>
             {searchInvoked && <span style={{marginLeft:'20px'}}>
                <Button onClick={()=>handleClear()} color="primary">Clear</Button>
@@ -678,6 +739,7 @@ function Javascript_play() {
                    <button onClick={()=>retrieveDeleted()}>Retrive Deleted Records</button>
                 </div>
                 <div>
+                   data length::: {data.length}
                    {/* <button onClick={()=>createEntry()}>Create Entry</button> */}
                    {/* <Link to={{
                       pathname: "/form",
@@ -719,7 +781,13 @@ function Javascript_play() {
                    setUniversityName = {setUniversityName}
                    handleSubmit={handleSubmit}/> */}
                 </div>
-            Here Is a List of Companies
+            Here Is a List of Companies 
+            <button style={{margin: "2px" ,display:"inline"}}>Previous</button>
+            {buttonStuff}
+            <button onClick={handleNextClick} style={{margin: "2px" ,display:"inline"}}>Next</button>
+
+            
+            
             <div>
                {univName}                
             </div>
