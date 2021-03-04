@@ -531,7 +531,7 @@ function Javascript_play() {
                let copyPagination = data.slice(25 * (currentPage - 1), 25 * currentPage);
 
                const buttonStuff = generateButtonsArray().map((i)=>{
-                  return (<button onClick={()=>{handlePageClick(i)}}style={{margin: "2px" ,display:"inline"}}>{i+1}</button>)
+                  return (<button disabled={(i+1===currentPage)? true : false} onClick={()=>{handlePageClick(i)}}style={{margin: "2px" ,display:"inline"}}>{i+1}</button>)
                })
 
 
@@ -666,6 +666,10 @@ function Javascript_play() {
            }
 
 
+           let pageLower = (25 * (currentPage - 1)) +1
+           let PageUpper = 25 * currentPage
+
+
           
 
        return (
@@ -788,8 +792,9 @@ function Javascript_play() {
             <button disabled={currentPage===1?true : false} onClick={handlePrev} style={{margin: "2px" ,display:"inline"}}>Previous</button>
             {buttonStuff}
             <button disabled={currentPage===generateButtonsArray().length?true:false} onClick={handleNextClick} style={{margin: "2px" ,display:"inline"}}>Next</button>
-
-            
+            <div style={{ textAlign: "center"}}>
+            {pageLower} - {PageUpper}
+            </div>          
             
             <div>
                {isSearching?
