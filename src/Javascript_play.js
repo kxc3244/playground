@@ -491,24 +491,26 @@ function Javascript_play() {
 
             const [isSearching, setIsSearching] = useState(false);
 
-   
+            (!isSearching) ? console.log('IS SEARCHING FALSE') : console.log('ISSEARCHING IS TRUE')
 
-            const univName =filterLogic().map((i,idx,arr)=>{
-               const {Employer,Career_Url,Job_Title,id,Graduation_Year} =i;
-               EmployerMap.set(id,Employer)
+
+            // const univName =filterLogic().map((i,idx,arr)=>{
+            //    const {Employer,Career_Url,Job_Title,id,Graduation_Year} =i;
+            //    EmployerMap.set(id,Employer)
                
                
-               return (
-                   <div className='clickCard' onClick={()=>handleOnClickCard(id)}>
-                   <Card 
-                  EmployerMap={EmployerMap} Career_Url={Career_Url} 
-                        Job_Title={Job_Title} id={id} key ={id} fav={fav} setFav={setFav} deleteCard={deleteCard} 
-                        Graduation_Year= {Graduation_Year}
-                   />
-                   </div>
-                   )
+            //    return (
+            //        <div className='clickCard' onClick={()=>handleOnClickCard(id)}>
+            //        <Card 
+            //       EmployerMap={EmployerMap} Career_Url={Career_Url} 
+            //             Job_Title={Job_Title} id={id} key ={id} fav={fav} setFav={setFav} deleteCard={deleteCard} 
+            //             Graduation_Year= {Graduation_Year}
+            //        />
+            //        </div>
+            //        )
                    
-               })  
+            //    })  
+
                // let n = data.length/25;
                // for(let i=0;i<n;i++){
                //    return (<button style={{margin: "2px" ,display:"inline"}}>{i+1}</button>)
@@ -526,6 +528,7 @@ function Javascript_play() {
             
                const[currentPage,setCurrentPage] = useState(1);
                
+               let copyPagination = data.slice(25 * (currentPage - 1), 25 * currentPage);
 
                const buttonStuff = generateButtonsArray().map((i)=>{
                   return (<button onClick={()=>{handlePageClick(i)}}style={{margin: "2px" ,display:"inline"}}>{i+1}</button>)
@@ -533,25 +536,22 @@ function Javascript_play() {
 
 
                function handlePageClick(i){
-                  setCurrentPage(i);
-                  handleNextClick();
+                  setCurrentPage(i+1);
+                  // handleNextClick();
+               }
+
+               function handlePrev(i){
+                  setCurrentPage(currentPage-1);
                }
                
 
                function handleNextClick(){
 
-                  if(currentPage===1){
-                     // console.log(data.slice(1,25),'SLICED ARRAY')
-                     const copy = data.slice(1,26)
-                     setData(copy)
-                  } else {
-                     let startIndex = (currentPage-1)*25 + 1;
-                     const copy1 = data.slice(1,26)
-                     setData(copy1);
+                  setCurrentPage(currentPage+1)
 
                   }
 
-               }
+               
                   
                     
                
@@ -560,11 +560,13 @@ function Javascript_play() {
 
 
             function handleClear(){
+               setIsSearching(false)
                setSearchText("")
                setSearchInvoked(false)
                }
 
                function handleSearch () {
+                  setIsSearching(true)
                    if(searchText.length ===0){
                        setSearchInvoked(false)
                    }
@@ -655,6 +657,7 @@ function Javascript_play() {
 
 
            function handleEnter(event){
+              setIsSearching(true)
               if(event.which === 13) {
                handleSearch();
                // console.log('ENTER WORKS')
@@ -739,7 +742,7 @@ function Javascript_play() {
                    <button onClick={()=>retrieveDeleted()}>Retrive Deleted Records</button>
                 </div>
                 <div>
-                   data length::: {data.length}
+                   data length::: {copyPagination.length}
                    {/* <button onClick={()=>createEntry()}>Create Entry</button> */}
                    {/* <Link to={{
                       pathname: "/form",
@@ -782,14 +785,48 @@ function Javascript_play() {
                    handleSubmit={handleSubmit}/> */}
                 </div>
             Here Is a List of Companies 
-            <button style={{margin: "2px" ,display:"inline"}}>Previous</button>
+            <button disabled={currentPage===1?true : false} onClick={handlePrev} style={{margin: "2px" ,display:"inline"}}>Previous</button>
             {buttonStuff}
-            <button onClick={handleNextClick} style={{margin: "2px" ,display:"inline"}}>Next</button>
+            <button disabled={currentPage===generateButtonsArray().length?true:false} onClick={handleNextClick} style={{margin: "2px" ,display:"inline"}}>Next</button>
 
             
             
             <div>
-               {univName}                
+               {isSearching?
+               filterLogic().map((i,idx,arr)=>{
+                  const {Employer,Career_Url,Job_Title,id,Graduation_Year} =i;
+                  EmployerMap.set(id,Employer)
+                  
+                  
+                  return (
+                      <div className='clickCard' onClick={()=>handleOnClickCard(id)}>
+                      <Card 
+                     EmployerMap={EmployerMap} Career_Url={Career_Url} 
+                           Job_Title={Job_Title} id={id} key ={id} fav={fav} setFav={setFav} deleteCard={deleteCard} 
+                           Graduation_Year= {Graduation_Year}
+                      />
+                      </div>
+                      )
+                      
+                  }) :
+
+                  copyPagination.map((i,idx,arr)=>{
+                     const {Employer,Career_Url,Job_Title,id,Graduation_Year} =i;
+                     EmployerMap.set(id,Employer)
+                     
+                     
+                     return (
+                         <div className='clickCard' onClick={()=>handleOnClickCard(id)}>
+                         <Card 
+                        EmployerMap={EmployerMap} Career_Url={Career_Url} 
+                              Job_Title={Job_Title} id={id} key ={id} fav={fav} setFav={setFav} deleteCard={deleteCard} 
+                              Graduation_Year= {Graduation_Year}
+                         />
+                         </div>
+                         )
+                         
+                     })
+                   }                
             </div>
           </div>
        )
