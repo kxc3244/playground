@@ -14,6 +14,8 @@ function Card({EmployerMap,Career_Url,Job_Title,id,fav,setFav,deleteCard,Graduat
 
     function handleFavClick({EmployerMap,id,e,setTheme}){
 
+        e.stopPropagation();
+
         const copyFav = [...fav]
         if(copyFav.includes(EmployerMap.get(id))){
             window.alert('Already Included in the Favorites')
@@ -28,6 +30,7 @@ function Card({EmployerMap,Career_Url,Job_Title,id,fav,setFav,deleteCard,Graduat
 
     function handleDeleteFav({EmployerMap,id,e,setTheme}) {
         const copyFav = [...fav]
+        e.stopPropagation();
         if(!copyFav.includes(EmployerMap.get(id))){
             window.alert('It is not here why would you try to remove it?')
         } else {
@@ -54,7 +57,7 @@ function Card({EmployerMap,Career_Url,Job_Title,id,fav,setFav,deleteCard,Graduat
                             <div>{Graduation_Year}</div>
                             <button onClick={(e)=>handleFavClick({EmployerMap,id,e,setTheme})}>Favorite</button> 
                             <button onClick={(e)=>handleDeleteFav({EmployerMap,id,e,setTheme})}>Delete Favorite</button>
-                            <button onClick={()=>deleteCard(id)}>Delete Record</button>
+                            <button onClick={(e)=>deleteCard(e,id)}>Delete Record</button>
                     </div>                 
                  )
              
