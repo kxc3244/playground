@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Student_Data from './Student_Data.json'
 import Card from './components/Card/Card'
 import {v4 as uuidv4} from 'uuid';
-import { BrowserRouter as Router, Switch, Route, Link, BrowserRouter, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, BrowserRouter, NavLink,useHistory } from 'react-router-dom';
 import Form from './components/Form/Form'
 import Home from './Home.js';
 import Modal from './Modal';
@@ -10,6 +10,10 @@ import './bootcamp.scss'
 import CardDetails from './components/CardDetails/CardDetails'
 import {Button} from 'reactstrap'
 import Checkbox from '@material-ui/core/Checkbox';
+import axios from 'axios'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import instance from './Axios'
+import RecordDetails from './components/RecordDetails/RecordDetails'
 
 
 
@@ -382,12 +386,14 @@ function Javascript_play() {
 
 
 
-      const uuidData = Student_Data.map((i)=>{
-         return {
-            ...i,
-            id: uuidv4()
-         }
-      })
+      // const uuidData = Student_Data.map((i)=>{
+      //    return {
+      //       ...i,
+      //       id: uuidv4()
+      //    }
+      // })
+
+      // const uuidData = []
 
       const EmployerMap = new Map();
 
@@ -454,21 +460,27 @@ function Javascript_play() {
 
 
 
-      useEffect(()=>{ 
+      // useEffect(()=>{ 
 
-         setData(uuidData);            
+      //    setData(uuidData);            
 
-      },[])
+      // },[])
 
+      const history = useHistory();
 
       function handleOnClickCard(id){
+         // instance.get(`/allrecords/id?=${id}`)
+         // .then(res=>{
+         //    console.log(res.data)
+         // })
+
+         history.push(`/recorddetails/${id}`)
          console.log("ONCLICK WAS CLICKED")
          let entry =data.filter(i=>i.id === id)
          console.log(entry,'filteredEntry');
          setViewCurrentRecord(entry[0])
          setIsModalOpen(true)
-      }
-                
+      }             
 
 
             // const givenData = data.map((item)=>{
@@ -488,6 +500,8 @@ function Javascript_play() {
 
 
             // })
+
+
 
             const [isSearching, setIsSearching] = useState(false);
 
@@ -670,6 +684,23 @@ function Javascript_play() {
            let PageUpper = 25 * currentPage
 
 
+           const [loading, setLoading] = useState(true)
+
+         //   const baseUrl = 'https://reaction-kevin-chawla.herokuapp.com'
+
+         //   const instance = axios.create({
+         //      baseURL: 'https://reaction-kevin-chawla.herokuapp.com'
+         //   });
+         //   instance.baseUrl = 'https://reaction-kevin-chawla.herokuapp.com'
+           useEffect(()=>{
+              instance.get('/allrecords')
+              .then(res=>{
+                  setData(res.data)
+                  setLoading(false)
+              })
+              .catch(e=>console.log(e))
+           },[])
+
           
 
        return (
@@ -797,6 +828,7 @@ function Javascript_play() {
             </div>          
             
             <div>
+               {loading?<CircularProgress /> : false}
                {isSearching?
                filterLogic().map((i,idx,arr)=>{
                   const {Employer,Career_Url,Job_Title,id,Graduation_Year} =i;

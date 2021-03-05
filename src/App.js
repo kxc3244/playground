@@ -10,6 +10,7 @@ import './bootcamp.scss';
 import './App.css';
 import Lottery from './components/Lottery/Lottery';
 import Form from './components/Form/Form'
+import RecordDetails from './components/RecordDetails/RecordDetails'
 
 class App extends Component {
   render() {
@@ -22,13 +23,16 @@ class App extends Component {
             <li><NavLink to={'/exercise_1'} className="nav-link">Exercise 1</NavLink></li>
             <li><Link to={'/exercise_2'} className="nav-link">Exercise 2</Link></li>
             <li><Link to={'/replicate_code'} className="nav-link">Exercise 3</Link></li>
-            <li><Link to={'/jsplayground'} className="nav-link">jsplayground</Link></li>
+            <li><Link to={'/jsplayground'} className="nav-link">Cards</Link></li>
             <li><Link to={'/exercise_4'} className="nav-link">Exercise 4(Stock Layout)</Link></li> 
             {/* <li><Link to={'/lottery'} className="nav-link">Lottery</Link></li>  */}
             
             <li>
             <a href="https://www.github.com/kxc3244/playground" target="_blank" className="nav-link">
-              Github Repository</a></li>
+              Github Front End</a></li>
+            <li>
+            <a href="https://www.github.com/kxc3244/reactBackEndPlayground" target="_blank" className="nav-link">
+              Github Back End</a></li>
           </ul>
           </nav>
           <hr />
@@ -40,7 +44,8 @@ class App extends Component {
               <Route path='/jsplayground' component={Javascript_play} />
               <Route path='/exercise_4' component={Exercise_4} />
               <Route path='/lottery' component={Lottery} />
-              <Route path='/form' component={Form} />              
+              <Route path='/form' component={Form} /> 
+              <Route path="/recorddetails/:id" component={RecordDetails} />
 
           </Switch>
         </div>
