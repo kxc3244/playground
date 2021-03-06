@@ -1,8 +1,6 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const instance = axios.create({
-    baseURL:'https://reaction-kevin-chawla.herokuapp.com'
-})
-
-export default instance;
+let baseURL=process.env.REACT_APP_BACKEND_URL
+export default axios.create({
+    baseURL
+  });
