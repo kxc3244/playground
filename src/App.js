@@ -33,7 +33,7 @@ class App extends Component {
             <li>
             <a href="https://www.github.com/kxc3244/reactBackEndPlayground" target="_blank" className="nav-link">
               Github Back End</a></li>
-            <a href="https://reaction-kevin-chawla.herokuapp.com/allrecords" target="_blank" className="nav-link">
+           <li> <a href="https://reaction-kevin-chawla.herokuapp.com/allrecords" target="_blank" className="nav-link">
              Back End Link</a></li>
           </ul>
           </nav>
