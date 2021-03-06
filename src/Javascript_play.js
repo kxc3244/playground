@@ -10,9 +10,9 @@ import './bootcamp.scss'
 import CardDetails from './components/CardDetails/CardDetails'
 import {Button} from 'reactstrap'
 import Checkbox from '@material-ui/core/Checkbox';
-import axios from 'axios'
+// import axios from 'axios'
 import CircularProgress from '@material-ui/core/CircularProgress';
-import instance from './Axios'
+import axios from './Axios'
 import RecordDetails from './components/RecordDetails/RecordDetails'
 
 
@@ -693,7 +693,7 @@ function Javascript_play() {
          //   });
          //   instance.baseUrl = 'https://reaction-kevin-chawla.herokuapp.com'
            useEffect(()=>{
-              instance.get('/allrecords')
+              axios.get('/allrecords')
               .then(res=>{
                   setData(res.data)
                   setLoading(false)
