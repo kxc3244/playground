@@ -13,7 +13,7 @@ function Replicate_Code() {
        return (
           <div>
              <div className={theme}> This is darktheme</div>
-             <button onClick={()=>setTheme('lighttheme')} className="button button1">Change Theme</button>
+             <button onClick={()=>theme==='darktheme'?setTheme('lighttheme'):setTheme('darktheme')} className="button button1">Change Theme</button>
           </div>
        )
     
