@@ -11,6 +11,7 @@ import './App.css';
 import Lottery from './components/Lottery/Lottery';
 import Form from './components/Form/Form'
 import RecordDetails from './components/RecordDetails/RecordDetails'
+import Carousel from './components/Carousel/Carousel'
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
             <li><Link to={'/replicate_code'} className="nav-link">Exercise 3</Link></li>
             <li><Link to={'/jsplayground'} className="nav-link">Cards</Link></li>
             <li><Link to={'/exercise_4'} className="nav-link">Exercise 4(Stock Layout)</Link></li> 
+            <li><Link to={'/carousel'} className="nav-link">Carousel</Link></li> 
             {/* <li><Link to={'/lottery'} className="nav-link">Lottery</Link></li>  */}
             
             <li>
@@ -48,6 +50,7 @@ class App extends Component {
               <Route path='/lottery' component={Lottery} />
               <Route path='/form' component={Form} /> 
               <Route path="/recorddetails/:id" component={RecordDetails} />
+              <Route path="/carousel" component={Carousel} />
 
           </Switch>
         </div>
