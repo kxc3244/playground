@@ -38,6 +38,12 @@ function Lottery(){
         <div>
             <h1>try this</h1>
             {/* {<button onClick={}>Generate Lottery</button>} */}
+            <h3>Einstien</h3>
+            <div>{teams[0]}</div>
+            <h3>Newton</h3>
+            <div>{teams[1]}</div>
+            <h3>Tesla</h3>
+            <div>{teams[2]}</div>
         </div>
     )
 }

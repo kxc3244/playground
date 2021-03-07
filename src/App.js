@@ -27,7 +27,7 @@ class App extends Component {
             <li><Link to={'/jsplayground'} className="nav-link">Cards</Link></li>
             <li><Link to={'/exercise_4'} className="nav-link">Exercise 4(Stock Layout)</Link></li> 
             <li><Link to={'/carousel'} className="nav-link">Carousel</Link></li> 
-            {/* <li><Link to={'/lottery'} className="nav-link">Lottery</Link></li>  */}
+            <li><Link to={'/lottery'} className="nav-link">Lottery</Link></li> 
             
             <li>
             <a href="https://www.github.com/kxc3244/playground" target="_blank" className="nav-link">
