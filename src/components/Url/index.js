@@ -15,7 +15,7 @@ function Url(props){
                                    
 Url.propTypes = {
 
-    Career_Url: PropTypes.string,
-    Job_Title: PropTypes.string
+    careerUrl: PropTypes.string,
+    jobTitle: PropTypes.string
 }
 export default Url;
