@@ -19,19 +19,19 @@ function RecordDetails(){
             setNewObject(copyData);
          })
 
-         const {Employer,Career_Url,Job_Title,Job_Start_Date,University_Name,Graduation_Year,Specialization} = newObject;
+         const {companyName,careerUrl,jobTitle,jobStartDate,universityName,graduationYear,Specialization} = newObject;
         //  console.log(newObject,'NEW OBJECT BLAHH')
 
     return(
         <div>
             
-            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><Url url={Career_Url} text={'Career Site'} styleClass={'link'}/></div>
-            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>Employer:</strong>{Employer}</div>
-            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>Graduation Year:</strong> {Graduation_Year}</div>
-            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>Job Start Date:</strong> {Job_Start_Date}</div>
-            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>Job Title:</strong> {Job_Title}</div>
+            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><Url url={careerUrl} text={'Career Site'} styleClass={'link'}/></div>
+            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>companyName:</strong>{companyName}</div>
+            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>Graduation Year:</strong> {graduationYear}</div>
+            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>Job Start Date:</strong> {jobStartDate}</div>
+            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>Job Title:</strong> {jobTitle}</div>
             <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>Specialization:</strong> {Specialization}</div>
-            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>University Name:</strong> {University_Name}</div>
+            <div style={{border:"1px solid black", margin:"5px", padding:"4px", backgroundColor:"lightgrey", width:"40%"}}><strong>University Name:</strong> {universityName}</div>
             
         </div>
     )

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, BrowserRouter, NavLink } from 'react-router-dom';
+import React, { Component, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link, BrowserRouter, NavLink, useHistory, Redirect} from 'react-router-dom';
 import Exercise_2 from './Exercise_2';
 import Exercise_1 from './Exercise_1';
 import Replicate_Code from './Replicate_Code';
@@ -13,11 +13,43 @@ import Form from './components/Form/Form'
 import RecordDetails from './components/RecordDetails/RecordDetails'
 import Carousel from './components/Carousel/Carousel'
 import Giphy from './components/Giphy/Giphy'
+import { useAuth0 } from '@auth0/auth0-react';
+import { Spinner } from 'reactstrap';
 
-class App extends Component {
-  render() {
+
+function App(){
+
+const history = useHistory();
+  
+
+  const { isLoading,
+          isAuthenticated,
+          error,
+          user,
+          loginWithRedirect,
+          logout
+  } = useAuth0()
+
+
+  if(isLoading){
+    return <Spinner />
+  }
+  
+  
+
+  
+    function handlOnclickDashboard(){
+       isAuthenticated ? history.push('/dashboard') : 
+      // return isAuthenticated ? <Redirect  to="/dashboard" push={}/> : 
+    loginWithRedirect()}
+  
+
+  
+
+
+
     return (
-    <BrowserRouter>
+    <BrowserRouter >
         <div>
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark try">
           <ul className="navbar-nav mr-auto">
@@ -27,7 +59,9 @@ class App extends Component {
             <li><Link to={'/replicate_code'} className="nav-link">Exercise 3</Link></li>
             <li><Link to={'/jsplayground'} className="nav-link">Cards</Link></li>
             <li><Link to={'/exercise_4'} className="nav-link">Exercise 4(Stock Layout)</Link></li> 
-            <li><Link to={'/carousel'} className="nav-link">Carousel</Link></li> 
+            {/* <li><Link to={'/carousel'} className="nav-link">Carousel</Link></li>  */}
+
+            <li><button onClick={()=>handlOnclickDashboard()} className="nav-link">Dashboard</button></li> 
             <li><Link to={'/lottery'} className="nav-link">Lottery</Link></li> 
             <li><Link to={'/giphy'} className="nav-link">Giphy</Link></li> 
             
@@ -52,14 +86,16 @@ class App extends Component {
               <Route path='/lottery' component={Lottery} />
               <Route path='/form' component={Form} /> 
               <Route path="/recorddetails/:id" component={RecordDetails} />
-              <Route path="/carousel" component={Carousel} />
+              <Route path='/dashboard' component={Carousel} />
+              {/* <Route path="/carousel" component={Carousel} /> */}
               <Route path="/giphy" component={Giphy} />
-
+              
           </Switch>
+
         </div>
       </BrowserRouter>
     );
-  }
+  
 }
 
 export default App;

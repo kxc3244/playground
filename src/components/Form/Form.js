@@ -7,8 +7,8 @@ import {Button} from 'reactstrap'
 
 function Form({careerUrl,
     setCareerUrl,
-    employer,
-    setEmployer,
+    companyName,
+    setcompanyName,
     graduationYear,
     setGraduationYear,
     jobStartDate,
@@ -22,7 +22,7 @@ function Form({careerUrl,
     handleSubmit}) {
     
     // const [careerUrl,setCareerUrl] =useState("");
-    // const [employer,setEmployer] =useState("");
+    // const [companyName,setcompanyName] =useState("");
     // const [graduationYear,setGraduationYear] =useState("");
     // const [jobStartDate,setJobStartDate] =useState("");
     // const [jobTitle,setJobTitle] =useState("");
@@ -36,8 +36,8 @@ function Form({careerUrl,
         
         // const {careerUrl,
         //         setCareerUrl,
-        //         employer,
-        //         setEmployer,
+        //         companyName,
+        //         setcompanyName,
         //         graduationYear,
         //         setGraduationYear,
         //         jobStartDate,
@@ -54,7 +54,7 @@ function Form({careerUrl,
 
 
     function handleDisable(){
-        if(employer.length <=100 && employer.length >=2){
+        if(companyName.length <=100 && companyName.length >=2){
             return false;
         }
         return true;
@@ -65,12 +65,12 @@ function Form({careerUrl,
           <div>
               <div>
                 {/* Career URL */}
-                <label for="career_url">Career Url:</label><br></br>
-                <input type="text" id="career_url" name="career_url" onChange={(e)=>setCareerUrl(e.target.value)} value={careerUrl} placeholder='Valid link with https://'></input><br></br>
+                <label for="careerUrl">Career Url:</label><br></br>
+                <input type="text" id="careerUrl" name="careerUrl" onChange={(e)=>setCareerUrl(e.target.value)} value={careerUrl} placeholder='Valid link with https://'></input><br></br>
 
-                {/* Employer */}
-                <label for="Employer">Employer:</label><br></br>
-                <input type="text" id="Employer" name="Employer" onChange={(e)=>setEmployer(e.target.value)} value={employer} placeholder ='ABC Company' required></input><br></br>
+                {/* companyName */}
+                <label for="companyName">companyName:</label><br></br>
+                <input type="text" id="companyName" name="companyName" onChange={(e)=>setcompanyName(e.target.value)} value={companyName} placeholder ='ABC Company' required></input><br></br>
 
                 {/* Graduation Year */}
                 <label for="gYear">Graduation Year:</label><br></br>

@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'; // ES6
 
 
 
-function CardDetails({Employer, careerUrl, Job_Title, Job_Start_Date,setFav,Specialization,
-   fav,Id,deleteRecord,University_Name}) 
+function CardDetails({companyName, careerUrl, jobTitle, jobStartDate,setFav,Specialization,
+   fav,Id,deleteRecord,universityName}) 
    
    {
 
@@ -21,12 +21,12 @@ function CardDetails({Employer, careerUrl, Job_Title, Job_Start_Date,setFav,Spec
     Click Here 
      </Url>     */}
     <div><Url url={careerUrl} text={'Career Site'} styleClass={'link'}/></div>
-    <div> {Employer}</div>   
-    <div>{Job_Title}</div>
-    <div>{Job_Start_Date}</div>
+    <div> {companyName}</div>   
+    <div>{jobTitle}</div>
+    <div>{jobStartDate}</div>
     <div>{Specialization}</div>
-    <div>{University_Name}</div>
-    <div>{Job_Title}</div>
+    <div>{universityName}</div>
+    <div>{jobTitle}</div>
     {/* <button onClick={(e)=>handleFavoriteClick(e,Id)}>Favorite</button>
     <button onClick={(e)=>handleUnFavoriteClick(e,Id)}>Unfavorite</button>
     <button onClick={()=>deleteRecord(Id)}>Delete Record</button> */}
@@ -38,8 +38,8 @@ function CardDetails({Employer, careerUrl, Job_Title, Job_Start_Date,setFav,Spec
 export default CardDetails
  
 CardDetails.propTypes = {
-Employer:PropTypes.string.isRequired,
+companyName:PropTypes.string.isRequired,
 careerUrl:PropTypes.string,
-Job_Title:PropTypes.string,
+jobTitle:PropTypes.string,
 
 }
