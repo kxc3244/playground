@@ -2,34 +2,10 @@ import React, { useState } from 'react';
 // import './card.scss'
 import Url from '../Url/index'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 // import '../../bootcamp.scss'
 
-// function Card({companyNameMap,careerUrl,jobTitle,id,graduationYear,universityName}){
 
-//     const [theme,setTheme] = useState('lighttheme')
-
-//                  return( 
-                    
-//                       <div className={theme}> 
-                        
-//                             <div><Url url={careerUrl} text={'Career Site'} styleClass={'link'}/></div>
-//                             <div>{companyNameMap.get(id)}</div>
-//                             <div>{universityName}</div>
-//                             <div>{jobTitle}</div>     
-//                             <div>{graduationYear}</div>
-//                     </div>                 
-//                  )
-             
-     
-// }
-
-// Card.propTypes = {
-
-//     careerUrl: PropTypes.string,
-//     jobTitle: PropTypes.string
-// }
-
-// import React from 'react';
 import { Table } from 'reactstrap';
 
 
@@ -43,18 +19,19 @@ const [currentIndex,setCurrentIndex] = useState(1);
     <Table hover dark striped>
       <thead>
         <tr>
-          <th style={{fontWeight:"bold"}}>Employer</th>
-          <th style={{fontWeight:"bold"}}>Job Title</th>
-          <th style={{fontWeight:"bold"}}>Job Start Date</th>
-          <th style={{fontWeight:"bold"}}>University Name</th>
-          <th style={{fontWeight:"bold"}}>Graduation Year</th>
-          <th style={{fontWeight:"bold"}}>Specialization</th>
-          <th style={{fontWeight:"bold"}}>Career Link</th>
+          <th style={{fontWeight:"900"}}>Employer</th>
+          <th style={{fontWeight:"900"}}>Job Title</th>
+          <th style={{fontWeight:"900"}}>Job Start Date</th>
+          <th style={{fontWeight:"900"}}>University Name</th>
+          <th style={{fontWeight:"900"}}>Graduation Year</th>
+          <th style={{fontWeight:"900"}}>Specialization</th>
+          <th style={{fontWeight:"900"}}>Career Link</th>
+          <th style={{fontWeight:"900"}}>Edit</th>
         </tr>
       </thead>
       <tbody>
           {data.map((i)=>{
-              console.log(i);
+              // console.log(i);
         return(
 
         <tr>
@@ -65,6 +42,7 @@ const [currentIndex,setCurrentIndex] = useState(1);
           <td>{i.graduationYear}</td>
           <td>{i.specialization}</td>
           <td><a href={i.company.careerUrl}>Apply</a></td>
+          <td><Link to={`/editrecord/${i._id}`}>Edit</Link></td>
         </tr>
         )
     })}

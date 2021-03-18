@@ -12,6 +12,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import {  useHistory } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -39,8 +40,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PermanentDrawerLeft({children}) {
+const defaultMenu = [
+  {label:'Home',url:'/jsplayground'},
+  {label:'Admin',url:'/admin'},
+]
+
+export default function PermanentDrawerLeft({menu=defaultMenu,children}) {
   const classes = useStyles();
+  const history= useHistory()
 
   return (
     <div className={classes.root}>
@@ -63,16 +70,16 @@ export default function PermanentDrawerLeft({children}) {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
+          {menu.map((item, index) => (
+            <ListItem button key={item.label}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={item.label} onClick={()=>history.push(item.url)}/>
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Visualization(Coming soon)', 'Chnage Company Records(Coming Soon)'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />

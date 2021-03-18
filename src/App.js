@@ -15,6 +15,9 @@ import Carousel from './components/Carousel/Carousel'
 import Giphy from './components/Giphy/Giphy'
 import { useAuth0 } from '@auth0/auth0-react';
 import { Spinner } from 'reactstrap';
+import EditHelper from './components/EditRecord/EditHelper'
+import EditRecord from './components/EditRecord/EditRecord'
+import Admin from './components/Admin/Admin'
 
 
 function App(){
@@ -38,10 +41,10 @@ const history = useHistory();
   
 
   
-    function handlOnclickDashboard(){
-       isAuthenticated ? history.push('/dashboard') : 
-      // return isAuthenticated ? <Redirect  to="/dashboard" push={}/> : 
-    loginWithRedirect()}
+    // function handlOnclickDashboard(){
+    //    isAuthenticated ? history.push('/dashboard') : 
+    //   // return isAuthenticated ? <Redirect  to="/dashboard" push={}/> : 
+    // loginWithRedirect()} 
   
 
   
@@ -57,11 +60,11 @@ const history = useHistory();
             <li><NavLink to={'/exercise_1'} className="nav-link">Exercise 1</NavLink></li>
             <li><Link to={'/exercise_2'} className="nav-link">Exercise 2</Link></li>
             <li><Link to={'/replicate_code'} className="nav-link">Exercise 3</Link></li>
-            <li><Link to={'/jsplayground'} className="nav-link">Cards</Link></li>
+            <li><Link to={'/jsplayground'} className="nav-link">Main App</Link></li>
             <li><Link to={'/exercise_4'} className="nav-link">Exercise 4(Stock Layout)</Link></li> 
             {/* <li><Link to={'/carousel'} className="nav-link">Carousel</Link></li>  */}
 
-            <li><button onClick={()=>handlOnclickDashboard()} className="nav-link">Dashboard</button></li> 
+            {/* <li><button onClick={()=>handlOnclickDashboard()} className="nav-link">Dashboard</button></li>  */}
             <li><Link to={'/lottery'} className="nav-link">Lottery</Link></li> 
             <li><Link to={'/giphy'} className="nav-link">Giphy</Link></li> 
             
@@ -87,6 +90,9 @@ const history = useHistory();
               <Route path='/form' component={Form} /> 
               <Route path="/recorddetails/:id" component={RecordDetails} />
               <Route path='/dashboard' component={Carousel} />
+              <Route path='/editrecord/:id' component={EditHelper} />
+              <Route path="/createnewrecord" component={EditRecord} />
+              <Route path="/admin" component={Admin} />
               {/* <Route path="/carousel" component={Carousel} /> */}
               <Route path="/giphy" component={Giphy} />
               

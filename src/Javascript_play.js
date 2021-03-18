@@ -148,8 +148,8 @@ function Javascript_play() {
             <YAxis />
             </XYPlot> */}
              <div>
-            <Login />
-            <Logout />
+            {/* <Login />
+            <Logout /> */}
             <input autoFocus placeholder='Search' onKeyPress={(e)=>handleKeyPress(e)}  value={searchText} style={{width:"20%"}} onChange={(e)=>setSearchText(e.target.value)}/>  
             <span style={{marginLeft:'20px'}}><Button disabled={searchInvoked} onClick={()=>handleSearch()} color="primary">Search</Button></span>
             {searchInvoked && <span style={{marginLeft:'20px'}}>
@@ -157,10 +157,10 @@ function Javascript_play() {
             </span>
             }
             </div>
-                <div>
+                {/* <div>
                    data length::: {data.length}                  
-                </div>
-            Here Is a List of Companies 
+                </div> */}
+            {/* Here Is a List of Companies  */}
             <div style={{margin:'20px',textAlign:'center'}}>
             <Button onClick={()=>getNext()} color="danger">See more...</Button>
             </div>
