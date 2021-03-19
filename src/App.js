@@ -1,5 +1,5 @@
 import React, { Component, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, BrowserRouter, NavLink, useHistory, Redirect} from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Link, BrowserRouter, NavLink, useHistory, Redirect} from 'react-router-dom';
 import Exercise_2 from './Exercise_2';
 import Exercise_1 from './Exercise_1';
 import Replicate_Code from './Replicate_Code';
@@ -52,7 +52,7 @@ const history = useHistory();
 
 
     return (
-    <BrowserRouter >
+    <Router >
         <div>
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark try">
           <ul className="navbar-nav mr-auto">
@@ -99,7 +99,7 @@ const history = useHistory();
           </Switch>
 
         </div>
-      </BrowserRouter>
+      </Router>
     );
   
 }
