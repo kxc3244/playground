@@ -16,6 +16,7 @@ import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries, VerticalBarSeries
 // import RecordDetails from './components/RecordDetails/RecordDetails'
 import Login from './Login'
 import Logout from './Logout'
+import NavBar from './components/NavBar/NavBar'
 
 
 
@@ -23,6 +24,8 @@ import Logout from './Logout'
 
 
 function Javascript_play() {  
+
+
 
       const [data,setData] = useState([]);
       const [careerUrl,setCareerUrl] =useState("");
@@ -130,7 +133,9 @@ function Javascript_play() {
                
        return (
           <div>
-             <XYPlot width={300} height={300} xType="ordinal">
+            <NavBar>
+
+             {/* <XYPlot width={300} height={300} xType="ordinal">
             <HorizontalGridLines />
             <VerticalBarSeries
                data={[
@@ -141,10 +146,10 @@ function Javascript_play() {
             />
             <XAxis />
             <YAxis />
-            </XYPlot>
+            </XYPlot> */}
              <div>
-            <Login />
-            <Logout />
+            {/* <Login />
+            <Logout /> */}
             <input autoFocus placeholder='Search' onKeyPress={(e)=>handleKeyPress(e)}  value={searchText} style={{width:"20%"}} onChange={(e)=>setSearchText(e.target.value)}/>  
             <span style={{marginLeft:'20px'}}><Button disabled={searchInvoked} onClick={()=>handleSearch()} color="primary">Search</Button></span>
             {searchInvoked && <span style={{marginLeft:'20px'}}>
@@ -152,10 +157,10 @@ function Javascript_play() {
             </span>
             }
             </div>
-                <div>
+                {/* <div>
                    data length::: {data.length}                  
-                </div>
-            Here Is a List of Companies 
+                </div> */}
+            {/* Here Is a List of Companies  */}
             <div style={{margin:'20px',textAlign:'center'}}>
             <Button onClick={()=>getNext()} color="danger">See more...</Button>
             </div>
@@ -178,6 +183,8 @@ function Javascript_play() {
             <div style={{margin:'20px',textAlign:'center'}}>
             <Button onClick={()=>getNext()} color="danger">See more...</Button>
             </div>
+            </NavBar>
+
           </div>
        )
     

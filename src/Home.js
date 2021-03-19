@@ -11,7 +11,7 @@ function Home() {
          //  </div>
 
          <div class="jumbotron">
-            <h1 class="display-4">Hello Bootcamp Folks</h1>
+            <h1 class="display-4">Sup Bootcamp Folks</h1>
             <p class="lead">Please choose the content from the above navigation bar.</p>
             <hr class="my-4"></hr>
             <p>If anything doesn't work or you wish to contact me just to chat please click the button below</p>
